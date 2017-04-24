@@ -13,9 +13,9 @@
       <div class="division3">
         <div class="division3__item--double">
           <div class="b-map">
-            <div class="b-map__item">first</div>
-            <div class="b-map__item">second</div>
-            <div class="b-map__item">third</div>
+            <div class="b-map__item" onClick='changeInfo(1)'>UAE</div>
+            <div class="b-map__item" onClick='changeInfo(2)'>Bahrein</div>
+            <div class="b-map__item" onClick='changeInfo(3)'>Saudi Arabia</div>
           </div>
         </div>
         <div class="division3__item">
@@ -28,10 +28,46 @@
       <div class="b-overlay">
         <h2>{{country}}</h2>
         <ul>
-          <li>{{info.one}}</li>
-          <li>{{info.two}}</li>
-          <li>{{info.three}}</li>
-          <li>{{info.four}}</li>
+          <li>Total Population</li>
+          <li>Percentage (15-24 years)</li>
+          <li>Male (15-24 years)</li>
+          <li>Male (18-34) 2017</li>
+          <li>Average Income</li>
+          <li>Educational Expenditure</li>
+          <li>Educational Level</li>
+          <li>Expat Percentage</li>
+          <li>Female (15 - 24 years)</li>
+          <li>Female (18-34) 2017</li>
+          <li>GDP per capita</li>
+          <li>Internet Penetration</li>
+          <li>Literacy Rates Men</li>
+          <li>Literacy Rates Women</li>
+          <li>Literacy rates (15-24 years old)</li>
+          <li>Population 1950's (18-34)</li>
+          <li>Population 1970's (18-34)</li>
+          <li>Population 1990's (18-34)</li>
+          <li>Population 2050's (18-34)</li>
+       </ul>
+        <ul>
+          <li>{{population}}</li>
+          <li>{{percentage15_24}}</li>
+          <li>{{male15_24}}</li>
+          <li>{{male18_34}}</li>
+          <li>{{avgIncome}}</li>
+          <li>{{eduExp}}</li>
+          <li>{{eduLvl}}</li>
+          <li>{{expPer}}</li>
+          <li>{{female15_24}}</li>
+          <li>{{female18_34}}</li>
+          <li>{{GDPperC}}</li>
+          <li>{{internetP}}</li>
+          <li>{{LRMen}}</li>
+          <li>{{LRWomen}}</li>
+          <li>{{LRage15_24}}</li>
+          <li>{{population50s}}</li>
+          <li>{{population70s}}</li>
+          <li>{{population90s}}</li>
+          <li>{{population2050s}}</li>
         </ul>
         <div style='background:{{color}}' class="b-overlay__image">
 
@@ -41,18 +77,51 @@
   </script>
 
   <div id='content'></div>
+  <div class="b-map__holder">
+    <div id="map"></div>
+  </div>
+  <script src='assets/js/info.js'></script>
+  <script src='assets/js/raphael.js'></script>
+  <script src='assets/js/map.js'></script>
+  <script src='assets/js/main.js'></script>
+
+
   <script>
   var source   = $("#entry-template").html();
   var template = Handlebars.compile(source);
-  var context = {country:"cg", about:"extra zemlja", color:"#332233",info:{one:"first", two:"second", three:'third', four:'fourth'}};
+  var context = {};
+  changeInfo(1);
   var html    = template(context);
-  $("#content").html(html);
 
-  function anotherContext(){
-    context = {country:"cg2", about:"extra zemlja2", color:"#112211",info:{one:"firsasdft", two:"seconasdfd", three:'thirasdfd', four:'fouasdfrth'}};
+
+  function changeInfo(itemNo){
+    context = {
+      country:_data[itemNo]["Country"],
+      population:_data[itemNo]["Total Population"],
+      percentage15_24:_data[itemNo]["Percentage (15-24 years)"],
+      male15_24:_data[itemNo]["Male (15-24 years)"],
+      male18_34:_data[itemNo]["Male (18-34) 2017"],
+      avgIncome:_data[itemNo]["Average Income"],
+      eduExp:_data[itemNo]["Educational Expenditure"],
+      eduLvl:_data[itemNo]["Educational Level"],
+      expPer:_data[itemNo]["Expat Percentage"],
+      female15_24:_data[itemNo]["Female (15 - 24 years)"],
+      female18_34:_data[itemNo]["Female (18-34) 2017"],
+      GDPperC:_data[itemNo]["GDP per capita"],
+      internetP:_data[itemNo]["Internet Penetration"],
+      LRMen:_data[itemNo]["Literacy Rates Men"],
+      LRWomen:_data[itemNo]["Literacy Rates Women"],
+      LRage15_24:_data[itemNo]["Literacy rates (15-24 years old)"],
+      population50s:_data[itemNo]["Population 1950’s (18-34)"],
+      population70s:_data[itemNo]["Population 1970’s (18-34)"],
+      population90s:_data[itemNo]["Population 1990’s (18-34)"],
+      population2050s:_data[itemNo]["Population 2050’s (18-34)"]
+    }
+    console.log(context);
     var html    = template(context);
     $("#content").html(html);
   }
   </script>
+
 </body>
 </html>

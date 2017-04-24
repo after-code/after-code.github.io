@@ -1,0 +1,21 @@
+{
+  "name": "ydi",
+  "homepage": "https://github.com/vasilie/ydi",
+  "authors": [
+    "vasilie <vasilie.91@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "handlebars": "^4.0.5"
+  }
+}
