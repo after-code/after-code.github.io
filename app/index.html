@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src='bower_components/jquery/dist/jquery.js'></script>
+  <script src='bower_components/handlebars/handlebars.js'></script>
+</head>
+<body>
+  <script id="entry-template" type="text/x-handlebars-template">
+    <div class="wrapper">
+      <div class="division3">
+        <div class="division3__item--double">
+          <div class="b-map">
+            <div class="b-map__item">first</div>
+            <div class="b-map__item">second</div>
+            <div class="b-map__item">third</div>
+          </div>
+        </div>
+        <div class="division3__item">
+          <div class="b-info">
+            <h3>{{country}}</h3>
+            <p>{{about}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="b-overlay">
+        <h2>{{country}}</h2>
+        <ul>
+          <li>{{info.one}}</li>
+          <li>{{info.two}}</li>
+          <li>{{info.three}}</li>
+          <li>{{info.four}}</li>
+        </ul>
+        <div style='background:{{color}}' class="b-overlay__image">
+
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <div id='content'></div>
+  <script>
+  var source   = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+  var context = {country:"cg", about:"extra zemlja", color:"#332233",info:{one:"first", two:"second", three:'third', four:'fourth'}};
+  var html    = template(context);
+  $("#content").html(html);
+
+  function anotherContext(){
+    context = {country:"cg2", about:"extra zemlja2", color:"#112211",info:{one:"firsasdft", two:"seconasdfd", three:'thirasdfd', four:'fouasdfrth'}};
+    var html    = template(context);
+    $("#content").html(html);
+  }
+  </script>
+</body>
+</html>

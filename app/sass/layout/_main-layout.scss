@@ -1,0 +1,18 @@
+.wrapper {
+  width: 100%;
+  margin:0 auto;
+  max-width: 1200px;
+}
+.division3 {
+  width: 100%;
+  overflow: hidden;
+  border:1px solid #222;
+}
+.division3__item {
+  width: 33.33%;
+  float: left;
+}
+.division3__item--double {
+  @extend .division3__item;
+  width: 66.66%;
+}
